@@ -1,6 +1,6 @@
 
 
-function Box({width, height, backgroundColor="red", deleteBox, id}){
+function Box({width, height, backgroundColor, deleteBox, id}){
     let style = {
         width: `${width}px`,
         height: `${height}px`,
@@ -9,9 +9,9 @@ function Box({width, height, backgroundColor="red", deleteBox, id}){
 
 
     return (
-        <div className="Box" id={id}>
+        <div className="Box" >
             <div style={style}></div>
-            <button onClick={deleteBox}>remove</button>
+            <button onClick={() =>deleteBox(id)}>remove</button>
         </div>
     );
 }

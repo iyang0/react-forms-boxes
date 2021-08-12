@@ -8,11 +8,10 @@ import NewBoxForm from './NewBoxForm';
 function BoxList(){
     const [ boxes, setBoxes ] = useState([]);
 
-    let id = uuid();
-
     function deleteBox(id) {
-        let box = document.getElementById(id);
-        box.remove();
+        // let box = document.getElementById(id);
+        // box.remove();
+        setBoxes(boxes => boxes.filter( ele => ele.id !== id))
     }
 
     function addBox(box) {
@@ -25,15 +24,16 @@ function BoxList(){
         <div>
             <NewBoxForm addBox={addBox}/>
             <div>
-                {boxes ? boxes.map(box => (
+                {boxes.map(box => (
                     <Box 
-                        deleteBox={ evt => deleteBox(box.id)}
+                        deleteBox={ () => deleteBox(box.id)}
                         width={box.width}
                         height={box.height}
                         backgroundColor={box.backgroundColor}
                         id={box.id}
+                        key={box.id}
                     />
-                )) : boxes}
+                ))}
             </div>
         </div>
     )
