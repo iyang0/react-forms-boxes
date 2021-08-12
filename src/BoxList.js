@@ -6,7 +6,7 @@ import NewBoxForm from './NewBoxForm';
 
 
 function BoxList(){
-    const { boxes, setBoxes } = useState([]);
+    const [ boxes, setBoxes ] = useState([]);
 
     let id = uuid();
 
@@ -24,13 +24,17 @@ function BoxList(){
     return(
         <div>
             <NewBoxForm addBox={addBox}/>
-            <ul>
+            <div>
                 {boxes ? boxes.map(box => (
-                    <Box deleteBox={ evt => deleteBox(id)}
+                    <Box 
+                        deleteBox={ evt => deleteBox(box.id)}
+                        width={box.width}
+                        height={box.height}
+                        backgroundColor={box.backgroundColor}
                         id={box.id}
                     />
                 )) : boxes}
-            </ul>
+            </div>
         </div>
     )
 }

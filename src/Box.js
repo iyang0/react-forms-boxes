@@ -2,17 +2,17 @@
 
 function Box({width, height, backgroundColor="red", deleteBox, id}){
     let style = {
-        width,
-        height,
+        width: `${width}px`,
+        height: `${height}px`,
         backgroundColor
     }
 
 
     return (
-        <li className="box" id={id}>
-            <div style={style}>box here</div>
+        <div className="Box" id={id}>
+            <div style={style}></div>
             <button onClick={deleteBox}>remove</button>
-        </li>
+        </div>
     );
 }
 
